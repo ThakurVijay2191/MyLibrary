@@ -6,11 +6,11 @@ import UIKit
 
 //MARK: Chip Layout API
 @available(iOS 16.0, *)
-struct ChipLayout: Layout {
-    var alignment: Alignment = .center
-    var spacing: CGFloat = 10
+public struct ChipLayout: Layout {
+    public var alignment: Alignment = .center
+    public var spacing: CGFloat = 10
     
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+    public func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let maxWidth = proposal.width ?? 0
         var height: CGFloat = 0
         
@@ -27,7 +27,7 @@ struct ChipLayout: Layout {
         return .init(width: maxWidth, height: height)
     }
     
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+    public func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         var origin = bounds.origin
         let maxWidth = bounds.width
         let rows = generateRows(maxWidth, proposal, subviews)
@@ -64,7 +64,7 @@ struct ChipLayout: Layout {
         
     }
     
-    func generateRows(_ maxWidth: CGFloat, _ proposal: ProposedViewSize, _ subviews: Subviews)-> [[LayoutSubviews.Element]]{
+    private func generateRows(_ maxWidth: CGFloat, _ proposal: ProposedViewSize, _ subviews: Subviews)-> [[LayoutSubviews.Element]]{
         var row: [LayoutSubviews.Element] = []
         var rows: [[LayoutSubviews.Element]] = []
         
@@ -105,7 +105,7 @@ struct ChipLayout: Layout {
 }
 
 @available(iOS 16.0, *)
-extension [LayoutSubviews.Element] {
+fileprivate extension [LayoutSubviews.Element] {
     func maxHeight(_ proposal: ProposedViewSize)-> CGFloat {
         return self.compactMap { view in
             return view.sizeThatFits(proposal).height
