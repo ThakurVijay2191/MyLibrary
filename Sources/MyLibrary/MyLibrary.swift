@@ -7,8 +7,13 @@ import UIKit
 //MARK: Chip Layout API
 @available(iOS 16.0, *)
 public struct ChipLayout: Layout {
-    public var alignment: Alignment = .center
-    public var spacing: CGFloat = 10
+    var alignment: Alignment = .center
+    var spacing: CGFloat = 10
+    
+    public init(alignment: Alignment, spacing: CGFloat) {
+        self.alignment = alignment
+        self.spacing = spacing
+    }
     
     public func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let maxWidth = proposal.width ?? 0
