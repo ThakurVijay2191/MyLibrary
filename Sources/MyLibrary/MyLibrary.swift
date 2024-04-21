@@ -64,7 +64,7 @@ public struct ChipLayout: Layout {
         
     }
     
-    private func generateRows(_ maxWidth: CGFloat, _ proposal: ProposedViewSize, _ subviews: Subviews)-> [[LayoutSubviews.Element]]{
+    public func generateRows(_ maxWidth: CGFloat, _ proposal: ProposedViewSize, _ subviews: Subviews)-> [[LayoutSubviews.Element]]{
         var row: [LayoutSubviews.Element] = []
         var rows: [[LayoutSubviews.Element]] = []
         
@@ -105,7 +105,7 @@ public struct ChipLayout: Layout {
 }
 
 @available(iOS 16.0, *)
-fileprivate extension [LayoutSubviews.Element] {
+public extension [LayoutSubviews.Element] {
     func maxHeight(_ proposal: ProposedViewSize)-> CGFloat {
         return self.compactMap { view in
             return view.sizeThatFits(proposal).height
