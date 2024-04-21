@@ -13,7 +13,7 @@ public struct ConditionalNavigation<Destination: View>: View {
     @Binding var isActive: Bool
     var isNavigationBarHidden: Bool
     
-    public init(@ViewBuilder destination: @escaping ()-> Destination, isActive: Binding<Bool>, isNavigationBarHidden: Bool = false) {
+    public init(isActive: Binding<Bool>, isNavigationBarHidden: Bool = false, @ViewBuilder destination: @escaping ()-> Destination) {
         self.destination = destination()
         self._isActive = isActive
         self.isNavigationBarHidden = isNavigationBarHidden
