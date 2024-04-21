@@ -22,4 +22,3 @@ public struct ConditionalNavigation<Destination: View>: View {
         NavigationLink("", destination: destination.navigationBarBackButtonHidden(isNavigationBarHidden), isActive: $isActive)
     }
 }
-
